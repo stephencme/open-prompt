@@ -1,5 +1,5 @@
 {
-  "name": "open-prompt",
+  "name": "anyprompt",
   "private": true,
   "workspaces": [
     "core",

@@ -1,13 +1,13 @@
 "use client"
 
-import { OpenPrompt, OpenPromptCore } from "open-prompt-core"
+import { AnyPrompt, AnyPromptCore } from "anyprompt-core"
 
 interface PromptsPageClientProps {
-  prompts: OpenPrompt[]
+  prompts: AnyPrompt[]
 }
 
 export default function PromptsPageClient(props: PromptsPageClientProps) {
-  const opc = new OpenPromptCore(props.prompts)
+  const opc = new AnyPromptCore(props.prompts)
 
   return (
     <div className="bg-gray-50 p-8">

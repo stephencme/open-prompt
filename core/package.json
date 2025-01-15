@@ -1,9 +1,9 @@
 {
-  "name": "open-prompt-core",
+  "name": "anyprompt-core",
   "version": "0.1.0",
   "description": "A lightweight library for configuring and rendering prompt templates.",
-  "main": "dist/OpenPromptCore.js",
-  "types": "dist/OpenPromptCore.d.ts",
+  "main": "dist/AnyPromptCore.js",
+  "types": "dist/AnyPromptCore.d.ts",
   "scripts": {
     "build": "tsc"
   },

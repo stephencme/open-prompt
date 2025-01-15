@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js"
-import { OpenPrompt, splitId } from "open-prompt-core"
+import { AnyPrompt, splitId } from "anyprompt-core"
 
 import { Database } from "@/database.types"
 import PromptsPageClient from "./page.client"
@@ -15,7 +15,7 @@ async function selectPrompts() {
 
 export default async function PromptsPage() {
   const { data } = await selectPrompts()
-  const prompts: OpenPrompt[] =
+  const prompts: AnyPrompt[] =
     data?.map((prompt) => {
       const { name, version } = splitId(prompt.id)
       return {

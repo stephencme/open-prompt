@@ -1,6 +1,6 @@
-# open-prompt-sdk
+# anyprompt-sdk
 
-A lightweight SDK for interacting with OpenPromptCore, enabling the fetching and usage of prompt templates from an external API.
+A lightweight SDK for interacting with AnyPromptCore, enabling the fetching and usage of prompt templates from an external API.
 
 ## Features
 
@@ -13,17 +13,17 @@ A lightweight SDK for interacting with OpenPromptCore, enabling the fetching and
 ### Importing the Library
 
 ```typescript
-import { OpenPromptSDK } from "open-prompt-sdk"
+import { AnyPromptSDK } from "anyprompt-sdk"
 ```
 
 ### Example with OpenAI API
 
 ```typescript
-import { OpenPromptSDK } from "open-prompt-sdk"
+import { AnyPromptSDK } from "anyprompt-sdk"
 import { OpenAI } from "openai"
 
-// Initialize OpenPromptSDK
-const opsdk = new OpenPromptSDK("your-api-url", "your-api-anon-key")
+// Initialize AnyPromptSDK
+const opsdk = new AnyPromptSDK("your-api-url", "your-api-anon-key")
 
 // Initialize OpenAI client
 const client = new OpenAI({ apiKey: "your-openai-api-key" })
@@ -48,12 +48,12 @@ console.log("Summary:", summary)
 
 ## API Reference
 
-### `OpenPromptSDK`
+### `AnyPromptSDK`
 
 #### Constructor
 
 ```typescript
-new OpenPromptSDK(apiUrl: string, apiAnonKey: string);
+new AnyPromptSDK(apiUrl: string, apiAnonKey: string);
 ```
 
 - **`apiUrl`**: The base URL of the API to fetch prompt templates from.

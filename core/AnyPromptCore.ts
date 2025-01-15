@@ -1,26 +1,26 @@
-// OpenPromptCore.ts
+// AnyPromptCore.ts
 
 /**
- * Represents a prompt template used in the OpenPrompt system.
+ * Represents a prompt template used in the AnyPrompt system.
  */
-export interface OpenPrompt {
+export interface AnyPrompt {
   name: string
   version: string
   template: string
 }
 
 /**
- * The OpenPromptCore class manages prompt templates and provides functionality
+ * The AnyPromptCore class manages prompt templates and provides functionality
  * to render templates with injected variables.
  */
-export class OpenPromptCore {
-  readonly prompts: Map<string, OpenPrompt>
+export class AnyPromptCore {
+  readonly prompts: Map<string, AnyPrompt>
 
   /**
-   * Constructs an instance of OpenPromptCore.
+   * Constructs an instance of AnyPromptCore.
    * @param prompts - An array of prompt templates to initialize with.
    */
-  constructor(prompts: OpenPrompt[]) {
+  constructor(prompts: AnyPrompt[]) {
     this.prompts = new Map()
     this.setPrompts(prompts)
   }
@@ -30,7 +30,7 @@ export class OpenPromptCore {
    * @param templates - An array of prompt templates to set.
    * @throws Will throw an error if a duplicate prompt template ID exists.
    */
-  setPrompts(prompts: OpenPrompt[]): void {
+  setPrompts(prompts: AnyPrompt[]): void {
     this.prompts.clear()
     prompts.forEach((prompt) => {
       const id = generateId(prompt.name, prompt.version)

@@ -1,5 +1,5 @@
 {
-  "name": "open-prompt-web",
+  "name": "anyprompt-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.47.13",
     "next": "15.1.4",
-    "open-prompt-core": "0.1.0",
+    "anyprompt-core": "0.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

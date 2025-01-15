@@ -1,4 +1,4 @@
-# open-prompt-core
+# anyprompt-core
 
 A lightweight library for configuring and rendering prompt templates.
 
@@ -13,17 +13,17 @@ A lightweight library for configuring and rendering prompt templates.
 ### Importing the Library
 
 ```typescript
-import { OpenPromptCore } from "open-prompt-core"
+import { AnyPromptCore } from "anyprompt-core"
 ```
 
 ## API Reference
 
-### `OpenPromptCore`
+### `AnyPromptCore`
 
 #### Constructor
 
 ```typescript
-new OpenPromptCore(prompts: OpenPrompt[]);
+new AnyPromptCore(prompts: AnyPrompt[]);
 ```
 
 - **`prompts`**: An array of prompt templates to initialize with.

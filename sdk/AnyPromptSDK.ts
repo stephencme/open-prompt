@@ -1,14 +1,14 @@
-// OpenPromptSDK.ts
+// AnyPromptSDK.ts
 
-import { OpenPromptCore } from "open-prompt-core"
+import { AnyPromptCore } from "anyprompt-core"
 
 /**
- * The OpenPromptSDK class provides an interface to interact with the
- * OpenPromptCore, allowing for the fetching and usage of prompt templates from
+ * The AnyPromptSDK class provides an interface to interact with the
+ * AnyPromptCore, allowing for the fetching and usage of prompt templates from
  * an external API.
  */
-export class OpenPromptSDK {
-  private core: OpenPromptCore
+export class AnyPromptSDK {
+  private core: AnyPromptCore
   private apiUrl: string
   private apiAnonKey: string
 
@@ -17,14 +17,14 @@ export class OpenPromptSDK {
   }
 
   /**
-   * Constructs an instance of OpenPromptSDK.
+   * Constructs an instance of AnyPromptSDK.
    * @param apiUrl - The base URL of the API to fetch prompt templates from.
    * @param apiAnonKey - The API key for authorization.
    */
   constructor(apiUrl: string, apiAnonKey: string) {
     this.apiUrl = apiUrl
     this.apiAnonKey = apiAnonKey
-    this.core = new OpenPromptCore([])
+    this.core = new AnyPromptCore([])
   }
 
   /**
