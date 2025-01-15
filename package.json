@@ -1,0 +1,9 @@
+{
+  "name": "open-prompt",
+  "private": true,
+  "workspaces": [
+    "core",
+    "sdk",
+    "web"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "open-prompt-sdk",
+  "version": "0.1.0",
+  "description": "A lightweight SDK for interacting with OpenPromptCore, enabling the fetching and usage of prompt templates from an external API.",
+  "main": "dist/OpenPromptSDK.js",
+  "types": "dist/OpenPromptSDK.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Stephen Chen",
+  "license": "MIT",
+  "dependencies": {
+    "open-prompt-core": "0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}

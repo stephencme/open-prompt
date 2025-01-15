@@ -1,0 +1,16 @@
+{
+  "name": "open-prompt-core",
+  "version": "0.1.0",
+  "description": "A lightweight library for configuring and rendering prompt templates.",
+  "main": "dist/OpenPromptCore.js",
+  "types": "dist/OpenPromptCore.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Stephen Chen",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}
