@@ -1,14 +1,12 @@
 "use client"
 
-import { AnyPrompt, AnyPromptCore } from "anyprompt-core"
+import { AnyPromptCore, PromptTemplate } from "@anyprompt/core"
 
 interface PromptsPageClientProps {
-  prompts: AnyPrompt[]
+  prompts: PromptTemplate[]
 }
 
 export default function PromptsPageClient(props: PromptsPageClientProps) {
-  const opc = new AnyPromptCore(props.prompts)
-
   return (
     <div className="bg-gray-50 p-8">
       <table className="bg-white table-auto w-full">
@@ -21,9 +19,9 @@ export default function PromptsPageClient(props: PromptsPageClientProps) {
           </tr>
         </thead>
         <tbody>
-          {Array.from(opc.prompts).map(([id, prompt]) => (
-            <tr className="border-b border-gray-300" key={id}>
-              <td className="font-mono px-4 py-2 text-left">{id}</td>
+          {props.prompts.map((prompt) => (
+            <tr className="border-b border-gray-300" key={prompt.id}>
+              <td className="font-mono px-4 py-2 text-left">{prompt.id}</td>
               <td className="font-mono px-4 py-2 text-left">{prompt.name}</td>
               <td className="font-mono px-4 py-2 text-left">
                 {prompt.version}

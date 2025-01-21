@@ -1,5 +1,5 @@
 {
-  "name": "anyprompt-sdk",
+  "name": "@anyprompt/sdk",
   "version": "0.1.0",
   "description": "A lightweight SDK for interacting with AnyPromptCore, enabling the fetching and usage of prompt templates from an external API.",
   "main": "dist/AnyPromptSDK.js",
@@ -10,7 +10,7 @@
   "author": "Stephen Chen",
   "license": "MIT",
   "dependencies": {
-    "anyprompt-core": "0.1.0"
+    "@anyprompt/core": "0.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -1,105 +1,99 @@
 // AnyPromptCore.ts
 
-/**
- * Represents a prompt template used in the AnyPrompt system.
- */
-export interface AnyPrompt {
+export type PromptTemplate = {
+  id: string
   name: string
   version: string
   template: string
 }
 
-/**
- * The AnyPromptCore class manages prompt templates and provides functionality
- * to render templates with injected variables.
- */
-export class AnyPromptCore {
-  readonly prompts: Map<string, AnyPrompt>
+export type Prompts = Record<string, PromptTemplate>
 
-  /**
-   * Constructs an instance of AnyPromptCore.
-   * @param prompts - An array of prompt templates to initialize with.
-   */
-  constructor(prompts: AnyPrompt[]) {
-    this.prompts = new Map()
-    this.setPrompts(prompts)
+export class AnyPromptCore {
+  private prompts: Prompts
+
+  constructor() {
+    this.prompts = {}
   }
 
   /**
-   * Sets the prompt templates.
-   * @param templates - An array of prompt templates to set.
-   * @throws Will throw an error if a duplicate prompt template ID exists.
+   * Add a new prompt template to the library.
+   * @param key The key in the format "name@version".
+   * @param template The template string.
    */
-  setPrompts(prompts: AnyPrompt[]): void {
-    this.prompts.clear()
-    prompts.forEach((prompt) => {
-      const id = generateId(prompt.name, prompt.version)
-      if (this.prompts.has(id)) {
-        throw new Error(`Duplicate prompt template "${id}" exists.`)
-      }
-      this.prompts.set(id, prompt)
+  setPrompt(key: string, template: string): void {
+    if (this.prompts[key]) {
+      console.warn(`Prompt with key "${key}" exists and will be overwritten.`)
+    }
+    const [name, version] = promptNameAndVersion(key)
+    this.prompts[key] = { id: key, name, version, template }
+  }
+
+  /**
+   * Add multiple prompt templates to the library.
+   * @param prompts A map of prompts in the format "name@version" to their
+   * respective templates.
+   */
+  setPrompts(prompts: Prompts): void {
+    Object.entries(prompts).forEach(([key, { template }]) => {
+      this.setPrompt(key, template)
     })
   }
 
   /**
-   * Renders a prompt template by name and version.
-   * @param name - The name of the prompt template.
-   * @param version - The version of the prompt template.
-   * @param variables - The variables to inject.
-   * @returns The rendered prompt with injected variables.
-   * @throws Will throw an error if the prompt template is not found.
+   * Get the appropriate prompt template for the given name and version.
+   * @param key The key in the format "name@version".
+   * @returns The matched prompt template.
    */
-  prompt(
-    name: string,
-    version: string,
-    variables: { [key: string]: any }
-  ): string {
-    const id = generateId(name, version)
-    if (!this.prompts.has(id)) {
-      throw new Error(`Prompt template "${id}" not found.`)
+  getPrompt(key: string): PromptTemplate {
+    const [name, version] = promptNameAndVersion(key)
+
+    // Filter prompts by name
+    const matchingNames = Object.values(this.prompts).filter(
+      ({ name: promptName }) => promptName === name
+    )
+    if (matchingNames.length < 1) {
+      throw new Error(`No prompts found matching name "${name}".`)
     }
-    const prompt = this.prompts.get(id)!
-    return renderTemplate(prompt.template, variables)
+
+    // Get prompt for version
+    const prompt = this.prompts[`${name}@${version}`]
+    if (!prompt) {
+      throw new Error(`No prompts found matching key "${key}".`)
+    }
+
+    return prompt
+  }
+
+  /**
+   * Render a prompt template with the given variables.
+   * @param key The key in the format "name@version".
+   * @param variables The variables to interpolate into the template.
+   * @returns The rendered string.
+   */
+  renderPrompt(key: string, variables: Record<string, string>): string {
+    const prompt = this.getPrompt(key)
+    if (!prompt) {
+      throw new Error(`No prompt found for key "${key}".`)
+    }
+
+    return prompt.template.replace(/{{\s*([\w.]+)\s*}}/g, (_, variable) => {
+      if (!(variable in variables)) {
+        throw new Error(`Missing variable "${variable}" for prompt "${key}".`)
+      }
+      return variables[variable]
+    })
   }
 }
 
-/**
- * Renders the template string by replacing placeholders with actual values.
- * @param template - The template string.
- * @param variables - The variables to inject.
- * @returns The rendered string.
- * @throws Will throw an error if a variable is missing from the provided
- * variables.
- */
-function renderTemplate(
-  template: string,
-  variables: { [key: string]: any }
-): string {
-  return template.replace(/\{\{(\w+)\}\}/g, (_, key) => {
-    if (key in variables) {
-      return String(variables[key])
-    }
-    throw new Error(`Missing variable "${key}" for template.`)
-  })
-}
-
-/**
- * Generate a unique ID for a prompt template based on its name and version.
- * @param name - The name of the template.
- * @param version - The version of the template.
- * @returns The unique ID.
- */
-export function generateId(name: string, version: string): string {
-  return `${name}@${version}`
-}
-
-/**
- * Splits an ID into its name and version parts.
- * @param id - The ID to split.
- * @returns An object containing the name and version.
- */
-
-export function splitId(id: string): { name: string; version: string } {
-  const [name, version] = id.split("@")
-  return { name, version }
+export function promptNameAndVersion(
+  key: string
+): [name: string, version: string] {
+  const [name, version, ...extraElements] = key.split("@")
+  if (!name || !version || extraElements.length > 0) {
+    throw new Error(
+      `Invalid key format: "${key}". Expected format "name@version".`
+    )
+  }
+  return [name, version]
 }
