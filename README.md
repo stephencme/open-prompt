@@ -1,10 +1,10 @@
 # anyprompt
 
-**AnyPrompt** is a lightweight library for configuring and rendering prompt templates. This monorepo contains three main packages:
+**AnyPrompt** helps AI application developers create, manage, and test LLM prompts. The monorepo contains three packages:
 
-- **@anyprompt/core**: A lightweight library for configuring and rendering prompt templates.
-- **@anyprompt/sdk**: An SDK on top of AnyPromptCore for fetching and rendering prompt templates configured via an external API.
-- **@anyprompt/web**: Intuitive CRUD interface with authentication for managing prompts and making them available for API consumption.
+- **@anyprompt/core**: a tiny library for configuring and rendering prompt templates.
+- **@anyprompt/sdk**: an SDK for fetching and rendering prompt templates from an AnyPrompt API.
+- **@anyprompt/web**: the AnyPrompt web app and API.
 
 This project is designed to be easily self-hosted via Vercel and Supabase.
 

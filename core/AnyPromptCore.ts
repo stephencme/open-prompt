@@ -17,7 +17,7 @@ export class AnyPromptCore {
   }
 
   /**
-   * Add a new prompt template to the library.
+   * Add a new prompt template.
    * @param key The key in the format "name@version".
    * @param template The template string.
    */
@@ -30,7 +30,7 @@ export class AnyPromptCore {
   }
 
   /**
-   * Add multiple prompt templates to the library.
+   * Add multiple prompt templates.
    * @param prompts A map of prompts in the format "name@version" to their
    * respective templates.
    */

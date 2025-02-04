@@ -1,12 +1,11 @@
 # @anyprompt/sdk
 
-An SDK on top of AnyPromptCore for fetching and rendering prompt templates configured via an external API.
+An SDK for fetching and rendering prompt templates from an AnyPrompt API.
 
 ## Features
 
-- Fetch prompt template versions from a specified API.
-- Render prompt templates with injected variables.
-- Easy integration with popular AI clients like OpenAI and Anthropic.
+- Fetch prompt templates from an AnyPrompt API.
+- Render prompt template versions with variables.
 
 ## Usage
 
