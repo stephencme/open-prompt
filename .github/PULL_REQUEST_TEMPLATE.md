@@ -1,12 +1,6 @@
-# Pull Request Template
-
-<!-- Please include a summary of the changes and which issue(s) are fixed. Please also include relevant motivation and context. List any dependencies that are required for this change. -->
-
----
-
 ## **Summary of Changes**
 
-<!-- Provide a brief overview of what your PR does and why it’s important. -->
+<!-- Provide a brief overview of what your PR does and why it’s important. List any dependencies that are required for this change. -->
 
 ---
 
